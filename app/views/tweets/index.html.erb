@@ -6,8 +6,13 @@
 
 <br>
 
-<div id="tweets">
-  <% @tweets.each do |tweet| %>
-    <%= render tweet %>
+<%# this tells JS to go and stream from the tweets stream according to model broadcast setup %>
+<%= turbo_stream_from "tweets" %>
+
+<div id="tweets-section">
+  <%= turbo_frame_tag "tweets" do %>
+    <% @tweets.each do |tweet| %>
+      <%= render tweet %>
+    <% end %>
   <% end %>
 </div>
