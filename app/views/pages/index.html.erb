@@ -1,0 +1,14 @@
+<div>Lazy-loading content with Turbo Frames and skeleton loader</div>
+
+<%= turbo_frame_tag :feed, src: content_path, loading: :lazy do %>
+  <div class="blobs-container">
+    <div class="blob white"></div>
+    <div class="blob red"></div>
+    <div class="blob orange"></div>
+    <div class="blob yellow"></div>
+    <div class="blob blue"></div>
+    <div class="blob green"></div>
+    <div class="blob purple"></div>
+    <div class="blob"></div>
+  </div>
+<% end %>
