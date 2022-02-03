@@ -2,12 +2,14 @@
 
 <h1>Tweeter</h1>
 
-<%= render "form", tweet: @tweet %>
-
-<br>
 
 <%# this tells JS to go and stream from the tweets stream according to model broadcast setup %>
 <%= turbo_stream_from "tweets" %>
+
+<%= turbo_frame_tag "tweet_form" do %>
+  <%= render "form", tweet: @tweet %>
+<% end %>
+<br>
 
 <div id="tweets-section">
   <%= turbo_frame_tag "tweets" do %>

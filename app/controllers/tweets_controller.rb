@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
   # GET /tweets or /tweets.json
   def index
     @tweet = Tweet.new
-    @tweets = Tweet.all
+    @tweets = Tweet.all.order(:id)
   end
 
   # GET /tweets/1 or /tweets/1.json
@@ -29,6 +29,7 @@ class TweetsController < ApplicationController
         format.html { redirect_to tweets_url, notice: "Tweet was successfully created." }
         format.json { render :show, status: :created, location: @tweet }
       else
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(@tweet, partial: "tweets/form", locals: { tweet: @tweet}) }
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
