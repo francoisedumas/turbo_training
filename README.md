@@ -24,9 +24,9 @@ Broadcast with update / delete needs to target a specific tweet
 
 ## Working with forms
 
-We have a validation tweet body can't be emply. We want to have just the form updated with warning when we submit empty tweet.
+We have a validation tweet body can't be empty. We want to have just the form updated with warning when we submit empty tweet.
  - 1/ wrap your form in a turbo_frame_tag
- - 2/ update create action with a ormat.turbo_stream telling the controller to replace by a frame when there is an error
+ - 2/ update create action with a format.turbo_stream telling the controller to replace by a frame when there is an error
  - 3/ link it with the form template by adding an id "new_tweet"
   - a/ looking at the network thanks to ajax request it replaces the form by a new one `<turbo-stream action="replace" target="new_tweet"><template><form id="new_tweet"... />`
 
